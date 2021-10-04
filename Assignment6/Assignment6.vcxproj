@@ -143,10 +143,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="input.h" />
+    <ClInclude Include="IntegerBag.h" />
     <ClInclude Include="menus.h" />
     <ClInclude Include="optionOne.h" />
     <ClInclude Include="optionThree.h" />
     <ClInclude Include="optionTwo.h" />
+    <ClInclude Include="TemplateBag.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
