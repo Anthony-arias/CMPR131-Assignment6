@@ -239,7 +239,7 @@ public:
 		if (isEmpty())
 			return;
 
-		cout << endl;
+		std::cout << std::endl;
 		for (int index = 0; index < size; index++)
 			std::cout << "\t\t[" << index << "] - " << bag[index] << std::endl;
 	}

@@ -26,6 +26,12 @@ public:
 	Course(Course &course)
 	{
 		name = course.getName();
+		for (int index = 0; index < course.getNumberOfStudents(); index++)
+		{
+			studentIDs.insert(course.getStudentIDAt(index));
+			studentNames.insert(course.getStudentNameAt(index));
+			studentScores.insert(course.getStudentScoreAt(index));
+		}
 	}
 
 	std::string getName()
@@ -62,6 +68,11 @@ public:
 			return "Unknown";
 
 		return studentNames.getValueAt(targetIndex);
+	}
+
+	int getNumberOfStudents()
+	{
+		return studentNames.getSize();
 	}
 
 	void addStudentScore(double score)
