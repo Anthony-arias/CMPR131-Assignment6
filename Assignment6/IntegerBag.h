@@ -23,12 +23,53 @@ public:
 		size = arraySize;
 	}
 
+	IntegerBag(IntegerBag& newBag)
+	{
+		bag = new int[newBag.getSize()];
+		size = newBag.getSize();
+		copy(newBag.getArray(), bag);
+	}
+
 	~IntegerBag()
 	{
 		delete[] bag;
 		bag = nullptr;
 	}
 
+	// Precondition: size cannot be less than 0
+	// Postcondition: the bag is cleared and is set to a new size
+	void setBagSize(int newSize)
+	{
+		if (size < 0)
+			return;
+
+		clear();
+		bag = new int[newSize];
+		size = newSize;
+	}
+
+	// Precondition: NA
+	// Postcondition: returns a pointer to the array in this bag
+	int* getArray()
+	{
+		return bag;
+	}
+
+	// Precondition: Bag must not be empty and targetIndex must be within range
+	// Postcondition: returns the value at the targetIndex of the bag
+	int getValueAt(int targetIndex)
+	{
+		if (isEmpty())
+			return NULL;
+		else if (!isValidIndex(targetIndex))
+			return NULL;
+		else
+			return bag[targetIndex];
+			
+	}
+
+	// Precondition: value must be an integer
+	// Postcondition: value is added to the end of the array
 	void insert(int value)
 	{
 		if (isEmpty())
@@ -50,6 +91,19 @@ public:
 			copy(holdBag, bag);
 			delete[] holdBag;
 		}
+	}
+
+	// Precondition: bag cannot be empty and targetIndex must be within range
+	// Postcondition: value is inserted into the bag at subscript targetIndex
+	void insertAt(int targetIndex, int value)
+	{
+		if (!isValidIndex(targetIndex))
+			return;
+
+		if (isEmpty())
+			return;
+
+		bag[targetIndex] = value;
 	}
 
 	// Precondition: bag must not be empty
@@ -100,10 +154,10 @@ public:
 		}
 	}
 
+	// Precondition list must not be empty, targetIndex must be within range
+	// Postcondition: the index at targetIndex is removed from the array
 	bool remove(int targetIndex)
 	{
-		std::cout << size << std::endl;
-
 		if (isEmpty())
 		{
 			std::cout << "ERROR (7.1): Bag is Empty" << std::endl;
@@ -133,6 +187,8 @@ public:
 		}
 	}
 
+	// Precondition: NA
+	// Postcondition: returns true if the list is empty, false otherwise
 	bool isEmpty()
 	{
 		if (size == 0)
@@ -141,14 +197,21 @@ public:
 		return false;
 	}
 
+	// Precondition: NA
+	// Postcondition: clears the array
 	void clear()
 	{
 		size = 0;
 		bag = new int[size];
 	}
 
+	// Precondition: list should not be empty
+	// Postcondition: sorts the array from least to greatest
 	void sort()
 	{
+		if (isEmpty())
+			return;
+
 		for (int leftBagLocation = 0; leftBagLocation < size; ++leftBagLocation)
 		{
 			int smallestIndex = leftBagLocation;
@@ -162,20 +225,27 @@ public:
 		}
 	}
 
+	// Precondition: NA
+	// Postcondition returns true if the index at targetIndex is valid
 	bool isValidIndex(int index)
 	{
 		return index >= 0 && index < size;
 	}
 
+	// Precondition: list should not be empty
+	// Postcondition: The list is displaye
 	void display()
 	{
 		if (isEmpty())
 			return;
 
+		cout << endl;
 		for (int index = 0; index < size; index++)
 			std::cout << "\t\t[" << index << "] - " << bag[index] << std::endl;
 	}
 
+	// Precondition: NA
+	// Postcondition: returns the size of the list
 	int getSize()
 	{
 		return size;

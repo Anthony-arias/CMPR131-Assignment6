@@ -4,6 +4,14 @@
 // Chapter 6: 
 // 10/??/2021
 
+
+/*
+    October 6
+        - Cleaned up Integer and Template bag classes. 
+        - Began work on challenge 3, demo of template class
+        - waiting on response of professor to continue.
+*/
+
 #include <iostream>
 #include <string>
 #include "optionOne.h"
@@ -11,8 +19,6 @@
 #include "optionThree.h"
 #include "input.h"
 #include "menus.h"
-#include "IntegerBag.h"
-#include "TemplateBag.h"
 
 void mainMenu(void);
 void programOne(void);
@@ -66,12 +72,12 @@ void programOne(void)
         switch (option)
         {
         case '0': return;
-        case 'a': case 'A': MyBag.clear(); pause("\n\t\tPress enter to continue..."); break;
-        case 'b': case 'B': MyBag.insert(inputInteger("\t\tEnter a value and insert into MyBag: ")); pause("\n\t\tPress enter to continue...");  break;
-        case 'c': case 'C': searchValue(MyBag); pause("\n\t\tPress enter to continue..."); break;
-        case 'd': case 'D': MyBag.remove(inputInteger("\t\tEnter an index(subscript) from MyBag to be deleted: "));  break;
-        case 'e': case 'E': MyBag.sort(); pause("\n\t\tPress enter to continue...");  break;
-        case 'f': case 'F': MyBag.display(); pause("\n\t\tPress enter to continue...");  break;
+        case 'a': case 'A': emptyIntBag(MyBag); pause("\n\t\tPress enter to continue..."); break;
+        case 'b': case 'B': insertInt(MyBag); pause("\n\t\tPress enter to continue...");  break;
+        case 'c': case 'C': searchIntValue(MyBag); pause("\n\t\tPress enter to continue..."); break;
+        case 'd': case 'D': removeIntIndex(MyBag); pause("\n\t\tPress enter to continue...");  break;
+        case 'e': case 'E': sortInt(MyBag); pause("\n\t\tPress enter to continue...");  break;
+        case 'f': case 'F': displayIntBag(MyBag); pause("\n\t\tPress enter to continue...");  break;
         default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', or 'S'" << endl;
             pause("\n\t\tPress enter to continue...");
         }
@@ -83,6 +89,8 @@ void programOne(void)
 //PostCondition:
 void programTwo(void)
 {
+    TemplateBag<double> MyBag;
+
     do
     {
         clearScreen();
@@ -93,12 +101,12 @@ void programTwo(void)
         switch (option)
         {
         case '0': return;
-        case 'a': case 'A': /*Function here*/ pause("\n\t\tPress enter to continue..."); break;
-        case 'b': case 'B': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'c': case 'C': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'd': case 'D': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'e': case 'E': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'f': case 'F': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
+        case 'a': case 'A': emptyTemplateBag(MyBag); pause("\n\t\tPress enter to continue..."); break;
+        case 'b': case 'B': insertTemplate(MyBag);  pause("\n\t\tPress enter to continue...");  break;
+        case 'c': case 'C': searchTemplateValue(MyBag); pause("\n\t\tPress enter to continue...");  break;
+        case 'd': case 'D': removeTemplateIndex(MyBag); pause("\n\t\tPress enter to continue...");  break;
+        case 'e': case 'E': sortTemplate(MyBag); pause("\n\t\tPress enter to continue...");  break;
+        case 'f': case 'F': displayTemplateBag(MyBag); pause("\n\t\tPress enter to continue...");  break;
         default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', or 'S'" << endl;
             pause("\n\t\tPress enter to continue...");
         }
