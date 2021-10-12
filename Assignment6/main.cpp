@@ -60,11 +60,13 @@ void mainMenu(void)
 //PostCondition:
 void programOne(void)
 {
+    clearScreen();
     IntegerBag MyBag;
-
+    cout << "\n\t1> Non-template MyBag of integers" << endl;
+    cout << "\t" + string(100, char(205)) << endl;
     do
     {
-        clearScreen();
+        
         displayOptionOneMenu();
 
         int option = inputChar("\t\tOption: ");
@@ -72,14 +74,13 @@ void programOne(void)
         switch (option)
         {
         case '0': return;
-        case 'a': case 'A': emptyIntBag(MyBag); pause("\n\t\tPress enter to continue..."); break;
-        case 'b': case 'B': insertInt(MyBag); pause("\n\t\tPress enter to continue...");  break;
-        case 'c': case 'C': searchIntValue(MyBag); pause("\n\t\tPress enter to continue..."); break;
-        case 'd': case 'D': removeIntIndex(MyBag); pause("\n\t\tPress enter to continue...");  break;
-        case 'e': case 'E': sortInt(MyBag); pause("\n\t\tPress enter to continue...");  break;
-        case 'f': case 'F': displayIntBag(MyBag); pause("\n\t\tPress enter to continue...");  break;
+        case 'a': case 'A': emptyIntBag(MyBag); break;
+        case 'b': case 'B': insertInt(MyBag); break;
+        case 'c': case 'C': searchIntValue(MyBag); break;
+        case 'd': case 'D': removeIntIndex(MyBag); break;
+        case 'e': case 'E': sortInt(MyBag); break;
+        case 'f': case 'F': displayIntBag(MyBag); break;
         default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', or 'S'" << endl;
-            pause("\n\t\tPress enter to continue...");
         }
     } while (true);
 }
@@ -89,11 +90,13 @@ void programOne(void)
 //PostCondition:
 void programTwo(void)
 {
+    clearScreen();
     TemplateBag<double> MyBag;
-
+    cout << "\n\t2> Template MyBag<double> container" << endl;
+    cout << "\t" + string(100, char(205)) << endl;
     do
     {
-        clearScreen();
+
         displayOptionTwoMenu();
 
         int option = inputChar("\t\tOption: ");
@@ -101,14 +104,13 @@ void programTwo(void)
         switch (option)
         {
         case '0': return;
-        case 'a': case 'A': emptyTemplateBag(MyBag); pause("\n\t\tPress enter to continue..."); break;
-        case 'b': case 'B': insertTemplate(MyBag);  pause("\n\t\tPress enter to continue...");  break;
-        case 'c': case 'C': searchTemplateValue(MyBag); pause("\n\t\tPress enter to continue...");  break;
-        case 'd': case 'D': removeTemplateIndex(MyBag); pause("\n\t\tPress enter to continue...");  break;
-        case 'e': case 'E': sortTemplate(MyBag); pause("\n\t\tPress enter to continue...");  break;
-        case 'f': case 'F': displayTemplateBag(MyBag); pause("\n\t\tPress enter to continue...");  break;
+        case 'a': case 'A': emptyTemplateBag(MyBag); break;
+        case 'b': case 'B': insertTemplate(MyBag); break;
+        case 'c': case 'C': searchTemplateValue(MyBag); break;
+        case 'd': case 'D': removeTemplateIndex(MyBag); break;
+        case 'e': case 'E': sortTemplate(MyBag); break;
+        case 'f': case 'F': displayTemplateBag(MyBag); break;
         default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', or 'S'" << endl;
-            pause("\n\t\tPress enter to continue...");
         }
     } while (true);
 }

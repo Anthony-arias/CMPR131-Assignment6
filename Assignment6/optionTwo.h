@@ -1,11 +1,10 @@
 // optionTwo.h
 
-#include "TemplateBag.h"
-#include "input.h"
-
 #ifndef OPTION_TWO_LOCK
 #define OPTION_TWO_LOCK
 
+#include "TemplateBag.h"
+#include "input.h"
 
 void searchTemplateValue(TemplateBag<double> MyBag)
 {
@@ -15,13 +14,13 @@ void searchTemplateValue(TemplateBag<double> MyBag)
 		return;
 	}
 
-	double value = inputDouble("\n\t\tEntr a value to search from MyBag");
+	double value = inputDouble("\n\t\tEnter a value to search from MyBag: ");
 	int atIndex = MyBag.search(value);
 
 	if (atIndex == -1)
-		std::cout << "\n\t\tValue " << value << " is not found from MyBag" << std::endl;
+		cout << "\n\t\tValue " << value << " is not found from MyBag.\n" << endl;
 	else
-		std::cout << "\n\t\tValue " << value << " is found at subscript #" << atIndex << " from MyBag";
+		cout << "\n\t\tValue " << value << " is found at subscript #" << atIndex << " from MyBag.\n";
 }
 
 void emptyTemplateBag(TemplateBag<double>& MyBag)
@@ -51,7 +50,8 @@ void removeTemplateIndex(TemplateBag<double>& MyBag)
 		return;
 	}
 
-	int indexRemoved = inputInteger("\n\t\tEnter an index(subscript) from MyBag to be deleted: ", 0, MyBag.getSize() - 1);
+	int size = MyBag.getSize() - 1;
+	int indexRemoved = inputInteger("\n\t\tEnter an index(subscript) from MyBag to be deleted (0.." + to_string(size) + "): ", 0, size);
 	double valueRemoved = MyBag.getValueAt(indexRemoved);
 	MyBag.remove(indexRemoved);
 	
@@ -79,7 +79,6 @@ void displayTemplateBag(TemplateBag<double> MyBag)
 		return;
 	}
 
-	cout << endl;
 	MyBag.display();
 	cout << endl;
 }

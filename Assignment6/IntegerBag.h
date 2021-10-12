@@ -1,9 +1,10 @@
 // IntegerBag.h
 
-#include <iostream>
 
 #ifndef INTEGER_BAG_LOCK
 #define INTEGER_BAG_LOCK	
+
+#include <iostream>
 
 class IntegerBag
 {

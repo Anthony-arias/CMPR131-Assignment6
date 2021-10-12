@@ -23,8 +23,7 @@ void displayMainMenu(void)
 //PostCondition: displays option one menu options
 void displayOptionOneMenu(void)
 {
-    cout << "\n\t1> Non-template MyBag of integers" << endl;
-    cout << "\t" + string(100, char(205)) << endl;
+
     cout << "\t\tA> clear" << endl;
     cout << "\t\tB> insert" << endl;
     cout << "\t\tC> search" << endl;
@@ -40,8 +39,7 @@ void displayOptionOneMenu(void)
 //PostCondition: displays option two menu options
 void displayOptionTwoMenu(void)
 {
-    cout << "\n\t2> Template MyBag<double> container" << endl;
-    cout << "\t" + string(100, char(205)) << endl;
+
     cout << "\t\tA> clear" << endl;
     cout << "\t\tB> insert" << endl;
     cout << "\t\tC> search" << endl;

@@ -1,10 +1,10 @@
 // optionOne.h
 
-#include "IntegerBag.h"
-#include "input.h"
-
 #ifndef OPTION_ONE_LOCK
 #define OPTION_ONE_LOCK
+
+#include "IntegerBag.h"
+#include "input.h"
 
 void searchIntValue(IntegerBag MyBag)
 {
@@ -14,13 +14,13 @@ void searchIntValue(IntegerBag MyBag)
 		return;
 	}
 
-	int value = inputInteger("\n\t\tEntr a value to search from MyBag");
+	int value = inputInteger("\n\t\tEnter a value to search from MyBag: ");
 	int atIndex = MyBag.search(value);
 
 	if (atIndex == -1)
-		std::cout << "\n\t\tValue " << value << " is not found from MyBag" << std::endl;
+		cout << "\n\t\tValue " << value << " is not found from MyBag.\n" << endl;
 	else
-		std::cout << "\n\t\tValue " << value << " is found at subscript #" << atIndex << " from MyBag\n" << std::endl;
+		cout << "\n\t\tValue " << value << " is found at subscript #" << atIndex << " from MyBag.\n" << endl;
 }
 
 void emptyIntBag(IntegerBag &MyBag)
@@ -49,8 +49,9 @@ void removeIntIndex(IntegerBag &MyBag)
 		cout << "\n\t\tMyBag is empty.\n" << endl;
 		return;
 	}
+	int size = MyBag.getSize() - 1;
 
-	int indexRemoved = inputInteger("\n\t\tEnter an index(subscript) from MyBag to be deleted: ", 0, MyBag.getSize() - 1);
+	int indexRemoved = inputInteger("\n\t\tEnter an index(subscript) from MyBag to be deleted (0.." + to_string(size) + "): ", 0, size);
 	int valueRemoved = MyBag.getValueAt(indexRemoved);
 	MyBag.remove(indexRemoved);
 
@@ -66,7 +67,7 @@ void sortInt(IntegerBag &MyBag)
 	}
 
 	MyBag.sort();
-	cout << "\nMyBag has been sorted\n" << endl;
+	cout << "\n\t\tMyBag has been sorted\n" << endl;
 }
 
 void displayIntBag(IntegerBag MyBag)

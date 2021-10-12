@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#ifndef TEMPLATE_BAG_LCOK
+#ifndef TEMPLATE_BAG_LOCK
 #define TEMPLATE_BAG_LOCK
 
 template <typename T>
