@@ -16,7 +16,7 @@ void determineSize(Course* &course, int &size)
 	size = inputInteger("\n\t\tEnter the number of courses: ",true);
 	course = new Course[size];
 	
-	cout << "\t\t" << size << " Course(s) has been created.\n" << endl;
+	cout << "\t\t" << size << "Course(s) has been created.\n" << endl;
 }
 
 
@@ -36,7 +36,7 @@ void readCourseData(Course course[], int size)
 		while (true)
 		{
 			string s;
-			fileName = inputString("\n\t\t Enter a data file name for course[" + to_string(index) + "] (STOP - Return): ", true);
+			fileName = inputString("\n\t\tEnter a data file name for course[" + to_string(index) + "] (STOP - Return): ", true);
 
 			if (fileName == "STOP" || fileName == "stop")
 				return;
@@ -120,7 +120,7 @@ void searchStudent(Course course[], int size)
 	{
 		do
 		{
-			cout << "\n\t\t3> Search by" << endl;
+			cout << "\n\t\tSearch by" << endl;
 			cout << "\t\t" + string(50, char(205)) << endl;
 			cout << "\t\t\t1. ID Number" << endl;
 			cout << "\t\t\t2. Name" << endl;
@@ -138,6 +138,46 @@ void searchStudent(Course course[], int size)
 			default: cout << "\t\t\tERROR-3A: Invalid input. Must be from 0..2." << endl;
 			}
 		} while (true);
+	}
+
+}
+
+void printOneCourse(Course course)
+{
+	cout << "\n\t\t" << course.getName() << endl;
+	cout << "\t\tIndex\t\tStudentID\t\tStudentName\t\tScore\t\tGrade" << endl;
+	for (int i = 0; i < course.getNumberOfStudents(); i++)
+		cout << "\t\t" << i << "\t\t " << course.getStudentIDAt(i) << "\t\t" << course.getStudentNameAt(i) << "\t\t"
+		<< course.getStudentScoreAt(i) << "\t\t" << course.getStudentGradeAt(i) << endl;
+	cout << endl;
+
+}
+void printCourses(Course course[], int size)
+{
+	if (size == 0)
+	{
+		cout << "\n\t\tERROR: No data file has been read and stored into Courses.\n" << endl;
+		return;
+	}
+	else
+	{
+		cout << "\n\t\tCourses:" << endl;
+		cout << "\t\t" + string(100, char(196)) << endl;
+		for (int i = 0; i < size; i++)
+			cout <<"\t\t"<< i + 1 << ". " << course[i].getName() << endl;
+		if (size > 1)
+			cout <<"\t\t"<< size + 1 << ". All courses" << endl;
+		cout << "\t\t" + string(100, char(196)) << endl;
+		int userInput = inputInteger("\t\t\tOption: ", 1, size + 1);
+		if (userInput <= size)
+			printOneCourse(course[userInput - 1]);
+		else
+		{
+			for (int i = 0; i < size; i++)
+				printOneCourse(course[i]);
+		}
+
+
 	}
 
 }

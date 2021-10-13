@@ -140,9 +140,9 @@ void programThree(void)
         case 'a': case 'A': determineSize(newCourse, size); break;
         case 'b': case 'B': readCourseData(newCourse, size);  break;
         case 'c': case 'C': searchStudent(newCourse, size);  break;
-        case 'd': case 'D': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'e': case 'E': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C', or 'D'" << endl;
+        case 'd': case 'D': printCourses(newCourse, size);  break;
+        case 'e': case 'E': printCourses(newCourse, size);  break;
+        default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D' or 'E'" << endl;
         }
         cout << endl;
     } while (true);

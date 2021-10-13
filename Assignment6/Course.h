@@ -29,6 +29,7 @@ public:
 			studentIDs.insert(course.getStudentIDAt(index));
 			studentNames.insert(course.getStudentNameAt(index));
 			studentScores.insert(course.getStudentScoreAt(index));
+			studentScores.insert(course.getStudentGradeAt(index));
 		}
 	}
 
@@ -91,13 +92,13 @@ public:
 	{
 		char grade = ' ';
 
-		if (score >= 90.0)
+		if (score > 89.9)
 			grade = 'A';
-		else if (grade >= 80.0)
+		else if (score > 79.9)
 			grade = 'B';
-		else if (grade >= 70.0)
+		else if (score > 69.9)
 			grade = 'C';
-		else if (grade >= 60.0)
+		else if (score > 59.9)
 			grade = 'D';
 		else
 			grade = 'F';
