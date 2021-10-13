@@ -145,7 +145,7 @@ void searchStudent(Course course[], int size)
 void printOneCourse(Course course)
 {
 	cout << "\n\t\t" << course.getName() << endl;
-	cout << "\t\tIndex\t\tStudentID\t\tStudentName\t\tScore\t\tGrade" << endl;
+	cout << "\t\tIndex\t\tStudentID\tStudentName\t\tScore\t\tGrade" << endl;
 	for (int i = 0; i < course.getNumberOfStudents(); i++)
 		cout << "\t\t" << i << "\t\t " << course.getStudentIDAt(i) << "\t\t" << course.getStudentNameAt(i) << "\t\t"
 		<< course.getStudentScoreAt(i) << "\t\t" << course.getStudentGradeAt(i) << endl;
@@ -162,13 +162,12 @@ void printCourses(Course course[], int size)
 	else
 	{
 		cout << "\n\t\tCourses:" << endl;
-		cout << "\t\t" + string(100, char(196)) << endl;
+		cout << "\t\t" + string(80, char(196)) << endl;
 		for (int i = 0; i < size; i++)
 			cout <<"\t\t"<< i + 1 << ". " << course[i].getName() << endl;
-		if (size > 1)
-			cout <<"\t\t"<< size + 1 << ". All courses" << endl;
-		cout << "\t\t" + string(100, char(196)) << endl;
-		int userInput = inputInteger("\t\t\tOption: ", 1, size + 1);
+		cout <<"\t\t"<< size + 1 << ". All courses" << endl;
+		cout << "\t\t" + string(80, char(196)) << endl;
+		int userInput = inputInteger("\t\tOption: ", 1, size + 1);
 		if (userInput <= size)
 			printOneCourse(course[userInput - 1]);
 		else

@@ -29,7 +29,7 @@ public:
 			studentIDs.insert(course.getStudentIDAt(index));
 			studentNames.insert(course.getStudentNameAt(index));
 			studentScores.insert(course.getStudentScoreAt(index));
-			studentScores.insert(course.getStudentGradeAt(index));
+			studentGrades.insert(course.getStudentGradeAt(index));
 		}
 	}
 
@@ -77,7 +77,7 @@ public:
 	void addStudentScore(double score)
 	{
 		studentScores.insert(score);
-		addStudentGrade(score);
+//		addStudentGrade(score);
 	}
 
 	double getStudentScoreAt(int targetIndex)
@@ -90,8 +90,7 @@ public:
 
 	void addStudentGrade(double score)
 	{
-		char grade = ' ';
-
+		char grade = 'F';
 		if (score > 89.9)
 			grade = 'A';
 		else if (score > 79.9)
