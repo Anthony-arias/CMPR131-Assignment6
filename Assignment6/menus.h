@@ -55,8 +55,7 @@ void displayOptionTwoMenu(void)
 //PostCondition: displays option three menu options
 void displayOptionThreeMenu(void)
 {
-    cout << "\n\t3> Courses using MyBags of integers, strings, doubles, and chars" << endl;
-    cout << "\t" + string(100, char(205)) << endl;
+
     cout << "\t\tA> Specify the number of courses" << endl;
     cout << "\t\tB> Read in data file and insert into courses" << endl;
     cout << "\t\tC> Search for a student record from a course" << endl;

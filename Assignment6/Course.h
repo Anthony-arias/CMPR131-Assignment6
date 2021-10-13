@@ -1,24 +1,22 @@
 //Course.h
-
+#ifndef COURSE_LOCK
+#define COURSE_LOCK	
 #include <string>
 #include "TemplateBag.h"
+using namespace std;
 
 class Course
 {
 private:
-	std::string name;
+	string name = "Unknown";
 	TemplateBag<int> studentIDs;
-	TemplateBag<std::string> studentNames;
+	TemplateBag<string> studentNames;
 	TemplateBag<double> studentScores;
 	TemplateBag<char> studentGrades;
 
 public:
-	Course()
-	{
-		name = "Unknown";
-	}
 
-	Course(std::string newName)
+	Course(string newName = "Unknown")
 	{
 		name = newName;
 	}
@@ -34,12 +32,12 @@ public:
 		}
 	}
 
-	std::string getName()
+	string getName()
 	{
 		return name;
 	}
 
-	void setName(std::string newName)
+	void setName(string newName)
 	{
 		name = newName;
 	}
@@ -57,12 +55,12 @@ public:
 		return studentIDs.getValueAt(targetIndex);
 	}
 
-	void addStudentName(std::string studentName)
+	void addStudentName(string studentName)
 	{
 		studentNames.insert(studentName);
 	}
 
-	std::string getStudentNameAt(int targetIndex)
+	string getStudentNameAt(int targetIndex)
 	{
 		if (!studentNames.isValidIndex(targetIndex))
 			return "Unknown";
@@ -93,13 +91,13 @@ public:
 	{
 		char grade = ' ';
 
-		if (score >= 90)
+		if (score >= 90.0)
 			grade = 'A';
-		else if (grade >= 80)
+		else if (grade >= 80.0)
 			grade = 'B';
-		else if (grade >= 70)
+		else if (grade >= 70.0)
 			grade = 'C';
-		else if (grade >= 60)
+		else if (grade >= 60.0)
 			grade = 'D';
 		else
 			grade = 'F';
@@ -116,3 +114,4 @@ public:
 	}
 
 };
+#endif

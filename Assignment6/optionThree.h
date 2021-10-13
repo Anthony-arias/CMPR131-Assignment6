@@ -5,20 +5,22 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+using namespace std;
 
 #ifndef OPTION_THREE_LOCK
 #define OPTION_THREE_LOCK
 
 // October 6 ~ might not be abe to use TemplateBag for course array... waiting on response from Prof
-void determineSize(Course* course, int &size)
+void determineSize(Course* &course, int &size)
 {
-	size = inputInteger("\n\t\t1> Enter the number of courses: ",true);
+	size = inputInteger("\n\t\tEnter the number of courses: ",true);
 	course = new Course[size];
 	
 	cout << "\t\t" << size << " Course(s) has been created.\n" << endl;
 }
 
-void readCourseData(Course course[], const int size)
+
+void readCourseData(Course course[], int size)
 {
 	if (size == 0)
 	{
@@ -30,113 +32,114 @@ void readCourseData(Course course[], const int size)
 
 	for (int index = 0; index < size; index++)
 	{
-
+		string fileName;
 		while (true)
 		{
-			std::string s;
-			std::string fileName = inputString("\n\t\t2> Enter a data file name for course[" + std::to_string(index) + "] (STOP - Return): ", true);
-			
+			string s;
+			fileName = inputString("\n\t\t Enter a data file name for course[" + to_string(index) + "] (STOP - Return): ", true);
+
 			if (fileName == "STOP" || fileName == "stop")
 				return;
-			
+
 			source.open(fileName);
 			if (!source.fail()) break;
 
-			cout << "\n\t\tERROR: file, aes, cannot be found. Please re-specify." << endl;
+			cout << "\n\t\tERROR: file, " << fileName << ", cannot be found.Please re - specify." << endl;
 		}
 
-		std::vector<std::string> lines;
-
+		string line;
+		getline(source, line);
+		course[index].setName(line);
 		while (true)
 		{
-			std::string line;
-
-			std::getline(source, line);
-			if (source.fail()) break;
-
-			lines.push_back(line);
-		}
-
-		std::vector<std::string> tokens;
-		std::string token;
-		// starting after course name
-		for (int index = 1; index < size; index++)
-		{
-			std::stringstream check1(lines[index]);
-			token;
-
-			while (std::getline(check1, token, ' '))
-				tokens.push_back(token);
-		}
-
-		if (lines.size() == 0)
-		{
-			cout << "\n\t\tFile is empty. Course not filled with information.\n" << std::endl;
-			return;
-		}
-
-		course[index].setName(lines[0]);
-		for (int index = 0; index < size; index++)
-		{			
-			int section = 1;
-			for (int i = 0; i < tokens.size(); i++)
+			if (source.fail()) break; // not "failure", just end of file
+			else
 			{
-				if (section == 1)
+				string s;
+				if (getline(source, s, ','))
 				{
-					std::stringstream s(tokens.at(i));
-					int id = 0;
-					s >> id;
-					course[index].addStudentID(id);
-					section++;
-				}
-				else if (section == 2)
-				{
-					course[index].addStudentName(tokens[i]);
-					section++;
-				}
-				else if (section == 3)
-				{
-					std::stringstream s(tokens.at(i));
-					double score = 0;
-					s >> score;
+					course[index].addStudentID(stoi(s));
+					source.seekg(1, 1);
+					getline(source, s, ',');
+					course[index].addStudentName(s);
+					getline(source, s);
+					double score = stod(s);
 					course[index].addStudentScore(score);
-					section = 1;
+					course[index].addStudentGrade(score);
 				}
 			}
 		}
-
-
-		for (int index = 0; index < size; index++)
-		{
-			cout << "course name: " << course[index].getName() << endl;
-			cout << "student names" << endl;
-			for (int i = 0; i < course[index].getNumberOfStudents(); i++)
-			{
-				cout << "student " << i << ". " << course[index].getStudentNameAt(i) << endl;
-			}
-
-			cout << "student ids" << endl;
-			for (int i = 0; i < course[index].getNumberOfStudents(); i++)
-			{
-				cout << "student " << i << ". " << course[index].getStudentIDAt(i) << endl;
-			}
-
-			cout << "student scores" << endl;
-			for (int i = 0; i < course[index].getNumberOfStudents(); i++)
-			{
-				cout << "student " << i << ". " << course[index].getStudentScoreAt(i) << endl;
-			}
-
-			cout << "student grades" << endl;
-			for (int i = 0; i < course[index].getNumberOfStudents(); i++)
-			{
-				cout << "student " << i << ". " << course[index].getStudentGradeAt(i) << endl;
-			}
-
-
-
-		}
+		source.close();
+		cout << "\n\t\tData from file, " << fileName << ", has been readand stored into Courses[" << index << "]" << endl;
 	}
+
+}
+
+void idSearch(Course course[], int size)
+{
+	int userInput = inputInteger("\t\t\tEnter a student ID to search: ", true);
+	int count = 0;
+	for (int i = 0; i < size; i++)
+	{
+		for(int j =0;j<course[i].getNumberOfStudents();j++)
+			if (course[i].getStudentIDAt(j) == userInput)
+			{
+				cout << "\n\t\t\tStudent ID: " << userInput << " has been found in Course : " << course[i].getName() << endl;
+				count++;
+			}
+	}
+	if (count == 0)
+		cout << "\n\t\t\tStudent ID: " << userInput << " can not be found." << endl;
+}
+
+void nameSearch(Course course[], int size)
+{
+	string userInput = inputString("\t\t\tEnter a student name to search: ", true);
+	int count = 0;
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < course[i].getNumberOfStudents(); j++)
+			if (course[i].getStudentNameAt(j) == userInput)
+			{
+				cout << "\n\t\t\tStudent name: " << userInput << " has been found in Course : " << course[i].getName() << endl;
+				count++;
+			}
+	}
+	if (count == 0)
+		cout << "\n\t\t\tStudent Name: " << userInput << " can not be found." << endl;
+}
+
+void searchStudent(Course course[], int size)
+{
+	if (size == 0)
+	{
+		cout << "\n\t\tERROR: No data file has been read and stored into Courses.\n" << endl;
+		return;
+	}
+	else
+	{
+		do
+		{
+			cout << "\n\t\t3> Search by" << endl;
+			cout << "\t\t" + string(50, char(205)) << endl;
+			cout << "\t\t\t1. ID Number" << endl;
+			cout << "\t\t\t2. Name" << endl;
+			cout << "\t\t" + string(50, char(196)) << endl;
+			cout << "\t\t\t0. return" << endl;
+			cout << "\t\t" + string(50, char(205)) << endl;
+
+			int userInput = inputInteger("\t\t\tOption: ", 0, 2);
+
+			switch (userInput)
+			{
+			case 0: return;
+			case 1: idSearch(course, size); break;
+			case 2: nameSearch(course, size);  break;
+			default: cout << "\t\t\tERROR-3A: Invalid input. Must be from 0..2." << endl;
+			}
+		} while (true);
+	}
+
 }
 
 #endif
