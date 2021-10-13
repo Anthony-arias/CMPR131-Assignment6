@@ -142,6 +142,46 @@ void searchStudent(Course course[], int size)
 
 }
 
+void searchAndDeleteStudent(Course &course)
+{
+	int userInput = inputInteger("\t\t\tEnter a student ID to search and delete: ", true);
+	int count = 0;
+	for (int i = 0; i < course.getNumberOfStudents(); i++)
+		if (course.getStudentIDAt(i) == userInput)
+		{
+			cout << "\n\t\t\tStudent ID: " << userInput << " has been found in Course : " << course.getName();
+			course.removeStudentAt(course,i);
+
+			cout << ", and has been removed." << endl;
+			count++;
+		}
+	if (count == 0)
+		cout << "\n\t\t\tStudent ID: " << userInput << " can not be found." << endl;
+}
+
+
+void removeStudent(Course course[], int size)
+{
+	if (size == 0)
+	{
+		cout << "\n\t\tERROR: No data file has been read and stored into Courses.\n" << endl;
+		return;
+	}
+	else
+	{
+		cout << "\n\t\tCourses:" << endl;
+		cout << "\t\t" + string(80, char(196)) << endl;
+		for (int i = 0; i < size; i++)
+			cout << "\t\t" << i + 1 << ". " << course[i].getName() << endl;
+		cout << "\t\t" + string(80, char(196)) << endl;
+		int userInput = inputInteger("\t\tOption: ", 1, size);
+		searchAndDeleteStudent(course[userInput - 1]);
+
+
+	}
+
+}
+
 void printOneCourse(Course course)
 {
 	cout << "\n\t\t" << course.getName() << endl;
@@ -152,6 +192,7 @@ void printOneCourse(Course course)
 	cout << endl;
 
 }
+
 void printCourses(Course course[], int size)
 {
 	if (size == 0)

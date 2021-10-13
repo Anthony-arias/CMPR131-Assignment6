@@ -2,10 +2,14 @@
 
 // IntegerBag.h
 
-#include <iostream>
 
 #ifndef TEMPLATE_BAG_LOCK
 #define TEMPLATE_BAG_LOCK
+
+#include <iostream>
+#include<string.h>
+using namespace std;
+
 
 template <typename T>
 class TemplateBag
@@ -148,7 +152,7 @@ public:
 		{
 			if (index == skippedIndex)
 			{
-				for (int i = index; i < size; i++)
+				for (int i = index; i < size-1; i++)
 					newBag[i] = original[i + 1];
 
 				break;
@@ -163,12 +167,12 @@ public:
 	{
 		if (isEmpty())
 		{
-			std::cout << "ERROR (7.1): Bag is Empty" << std::endl;
+			cout << "ERROR (7.1): Bag is Empty" << endl;
 			return false;
 		}
 		else if (!isValidIndex(targetIndex))
 		{
-			std::cout << "ERROR (7.2): Index is Out of Range" << std::endl;
+			cout << "ERROR (7.2): Index is Out of Range" << endl;
 		}
 		else if (size == 1)
 		{
@@ -243,7 +247,7 @@ public:
 			return;
 
 		for (int index = 0; index < size; index++)
-			std::cout << "\t\t[" << index << "] - " << bag[index] << std::endl;
+			cout << "\t\t[" << index << "] - " << bag[index] << endl;
 	}
 
 	// Precondition: NA

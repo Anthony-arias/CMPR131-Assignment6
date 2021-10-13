@@ -77,7 +77,6 @@ public:
 	void addStudentScore(double score)
 	{
 		studentScores.insert(score);
-//		addStudentGrade(score);
 	}
 
 	double getStudentScoreAt(int targetIndex)
@@ -111,6 +110,16 @@ public:
 			return 'U';
 
 		return studentGrades.getValueAt(targetIndex);
+	}
+
+	void removeStudentAt(Course& course, int targetIndex)
+	{
+
+		course.studentIDs.remove(targetIndex);
+		course.studentNames.remove(targetIndex);
+		course.studentScores.remove(targetIndex);
+		course.studentGrades.remove(targetIndex);
+
 	}
 
 };
