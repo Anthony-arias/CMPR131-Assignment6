@@ -39,7 +39,7 @@ void insertInt(IntegerBag &MyBag)
 {
 	int intInserted = inputInteger("\n\t\tEnter a value and insert into MyBag: ");
 	MyBag.insert(intInserted);
-	cout << "\n\t\t" << intInserted << " has been inserted into MyBag\n" << endl;
+	cout << "\n\t\t" << intInserted << " has been inserted into MyBag.\n" << endl;
 }
 
 void removeIntIndex(IntegerBag &MyBag)
@@ -55,7 +55,7 @@ void removeIntIndex(IntegerBag &MyBag)
 	int valueRemoved = MyBag.getValueAt(indexRemoved);
 	MyBag.remove(indexRemoved);
 
-	cout << "\n\t\tValue " << valueRemoved << " has been deleted from MyBag\n" << endl;
+	cout << "\n\t\tValue " << valueRemoved << " has been deleted from MyBag.\n" << endl;
 }
 
 void sortInt(IntegerBag &MyBag)
@@ -67,7 +67,7 @@ void sortInt(IntegerBag &MyBag)
 	}
 
 	MyBag.sort();
-	cout << "\n\t\tMyBag has been sorted\n" << endl;
+	cout << "\n\t\tMyBag has been sorted.\n" << endl;
 }
 
 void displayIntBag(IntegerBag MyBag)

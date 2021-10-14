@@ -23,7 +23,8 @@ void displayMainMenu(void)
 //PostCondition: displays option one menu options
 void displayOptionOneMenu(void)
 {
-
+    cout << "\n\t1> Non-template MyBag of integers" << endl;
+    cout << "\t" + string(100, char(205)) << endl;
     cout << "\t\tA> clear" << endl;
     cout << "\t\tB> insert" << endl;
     cout << "\t\tC> search" << endl;
@@ -39,7 +40,8 @@ void displayOptionOneMenu(void)
 //PostCondition: displays option two menu options
 void displayOptionTwoMenu(void)
 {
-
+    cout << "\n\t2> Template MyBag<double> container" << endl;
+    cout << "\t" + string(100, char(205)) << endl;
     cout << "\t\tA> clear" << endl;
     cout << "\t\tB> insert" << endl;
     cout << "\t\tC> search" << endl;
@@ -55,7 +57,8 @@ void displayOptionTwoMenu(void)
 //PostCondition: displays option three menu options
 void displayOptionThreeMenu(void)
 {
-
+    cout << "\n\t3> Courses using MyBags of integers, strings, doubles, and chars" << endl;
+    cout << "\t" + string(100, char(205)) << endl;
     cout << "\t\tA> Specify the number of courses" << endl;
     cout << "\t\tB> Read in data file and insert into courses" << endl;
     cout << "\t\tC> Search for a student record from a course" << endl;

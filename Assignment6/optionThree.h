@@ -15,8 +15,10 @@ void determineSize(Course* &course, int &size)
 {
 	size = inputInteger("\n\t\tEnter the number of courses: ",true);
 	course = new Course[size];
-	
-	cout << "\t\t" << size << "Course(s) has been created.\n" << endl;
+	if (size == 1)
+		cout << "\t\t" << size << " course has been created.\n" << endl;
+	else
+		cout << "\t\t" << size << " courses has been created.\n" << endl;
 }
 
 
@@ -27,7 +29,7 @@ void readCourseData(Course course[], int size)
 		cout << "\n\t\tERROR: Number of courses has not been assigned.\n" << endl;
 		return;
 	}
-
+	course = new Course[size];
 	ifstream source;
 
 	for (int index = 0; index < size; index++)
@@ -39,12 +41,14 @@ void readCourseData(Course course[], int size)
 			fileName = inputString("\n\t\tEnter a data file name for course[" + to_string(index) + "] (STOP - Return): ", true);
 
 			if (fileName == "STOP" || fileName == "stop")
+			{
+				course = new Course[size];
 				return;
-
+			}
 			source.open(fileName);
 			if (!source.fail()) break;
 
-			cout << "\n\t\tERROR: file, " << fileName << ", cannot be found.Please re - specify." << endl;
+			cout << "\n\t\tERROR: file, " << fileName << ", cannot be found. Please re - specify." << endl;
 		}
 
 		string line;
@@ -101,7 +105,7 @@ void nameSearch(Course course[], int size)
 		for (int j = 0; j < course[i].getNumberOfStudents(); j++)
 			if (course[i].getStudentNameAt(j) == userInput)
 			{
-				cout << "\n\t\t\tStudent name: " << userInput << " has been found in Course : " << course[i].getName() << endl;
+				cout << "\n\t\t\tStudent name: " << userInput << " has been found in Course: " << course[i].getName() << endl;
 				count++;
 			}
 	}
@@ -185,10 +189,19 @@ void removeStudent(Course course[], int size)
 void printOneCourse(Course course)
 {
 	cout << "\n\t\t" << course.getName() << endl;
-	cout << "\t\tIndex\t\tStudentID\tStudentName\t\tScore\t\tGrade" << endl;
+	cout << "\t\t" << setw(10) << left << "Index";
+	cout << setw(15) << left << "StudentID";
+	cout << setw(30) << left << "StudentName";
+	cout << setw(10) << left << "Score";
+	cout << setw(10) << left << "Grade" << endl;
 	for (int i = 0; i < course.getNumberOfStudents(); i++)
-		cout << "\t\t" << i << "\t\t " << course.getStudentIDAt(i) << "\t\t" << course.getStudentNameAt(i) << "\t\t"
-		<< course.getStudentScoreAt(i) << "\t\t" << course.getStudentGradeAt(i) << endl;
+	{
+		cout << "\t\t" << setw(10) << left << i;
+		cout << setw(15) << left << course.getStudentIDAt(i);
+		cout << setw(30) << left << course.getStudentNameAt(i);
+		cout << setw(10) << left << course.getStudentScoreAt(i);
+		cout << setw(10) << left << course.getStudentGradeAt(i) << endl;
+	}
 	cout << endl;
 
 }

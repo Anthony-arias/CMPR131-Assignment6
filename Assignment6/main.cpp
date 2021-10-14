@@ -48,10 +48,10 @@ void mainMenu(void)
         int userInput = inputInteger("\t\tOption: ", 0, 3);
         switch (userInput)
         {
-        case 0: clearScreen(); return;
-        case 1: clearScreen(); programOne(); break;
-        case 2: clearScreen(); programTwo(); break;
-        case 3: clearScreen(); programThree(); break;
+        case 0: return;
+        case 1: programOne(); break;
+        case 2: programTwo(); break;
+        case 3: programThree(); break;
         default: cout << "\t\tERROR-3A: Invalid input. Must be from 0..3." << endl;
         }
 
@@ -64,8 +64,7 @@ void programOne(void)
 {
     clearScreen();
     IntegerBag MyBag;
-    cout << "\n\t1> Non-template MyBag of integers" << endl;
-    cout << "\t" + string(100, char(205)) << endl;
+
     do
     {
         
@@ -82,8 +81,9 @@ void programOne(void)
         case 'd': case 'D': removeIntIndex(MyBag); break;
         case 'e': case 'E': sortInt(MyBag); break;
         case 'f': case 'F': displayIntBag(MyBag); break;
-        default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', or 'S'" << endl;
+        default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D','E', or 'F'" << endl;
         }
+        cout << endl;
     } while (true);
 }
 
@@ -94,8 +94,7 @@ void programTwo(void)
 {
     clearScreen();
     TemplateBag<double> MyBag;
-    cout << "\n\t2> Template MyBag<double> container" << endl;
-    cout << "\t" + string(100, char(205)) << endl;
+
     do
     {
 
@@ -112,8 +111,9 @@ void programTwo(void)
         case 'd': case 'D': removeTemplateIndex(MyBag); break;
         case 'e': case 'E': sortTemplate(MyBag); break;
         case 'f': case 'F': displayTemplateBag(MyBag); break;
-        default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', or 'S'" << endl;
+        default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D','E', or 'F'" << endl;
         }
+        cout << endl;
     } while (true);
 }
 
@@ -125,8 +125,7 @@ void programThree(void)
     Course* newCourse;
     int size = 0;
     newCourse = new Course[size];
-    cout << "\n\t3> Courses using MyBags of integers, strings, doubles, and chars" << endl;
-    cout << "\t" + string(100, char(205)) << endl;
+
     do
     {
 
