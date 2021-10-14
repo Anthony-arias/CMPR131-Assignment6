@@ -193,6 +193,8 @@ void printOneCourse(Course course)
 	cout << setw(30) << left << "StudentName";
 	cout << setw(10) << left << "Score";
 	cout << setw(10) << left << "Grade" << endl;
+	double totalScores = 0.0;
+	double averagedScore = 0.0;
 	for (int i = 0; i < course.getNumberOfStudents(); i++)
 	{
 		cout << "\t\t" << setw(10) << left << i;
@@ -200,7 +202,21 @@ void printOneCourse(Course course)
 		cout << setw(30) << left << course.getStudentNameAt(i);
 		cout << setw(10) << left << course.getStudentScoreAt(i);
 		cout << setw(10) << left << course.getStudentGradeAt(i) << endl;
+		totalScores = totalScores + course.getStudentScoreAt(i);
 	}
+	averagedScore = totalScores / course.getNumberOfStudents();
+	char grade = 'F';
+	if (averagedScore > 89.9)
+		grade = 'A';
+	else if (averagedScore > 79.9)
+		grade = 'B';
+	else if (averagedScore > 69.9)
+		grade = 'C';
+	else if (averagedScore > 59.9)
+		grade = 'D';
+	else
+		grade = 'F';
+	cout << "\n\t\tAverage score and grade: " << averagedScore << "(" << grade << ")" << endl;
 	cout << endl;
 
 }
