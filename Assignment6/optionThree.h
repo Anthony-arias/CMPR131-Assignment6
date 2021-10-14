@@ -73,7 +73,7 @@ void readCourseData(Course*& course, int size)
 			}
 		}
 		source.close();
-		cout << "\n\t\tData from file, " << fileName << ", has been readand stored into Courses[" << index << "]" << endl;
+		cout << "\n\t\tData from file, " << fileName << ", has been read and stored into Courses[" << index << "]" << endl;
 	}
 
 }
