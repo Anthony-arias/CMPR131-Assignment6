@@ -115,7 +115,7 @@ void nameSearch(Course course[], int size)
 
 void searchStudent(Course course[], int size)
 {
-	if (size == 0)
+	if (size == 0 || course->getName() == "Unknown")
 	{
 		cout << "\n\t\tERROR: No data file has been read and stored into Courses.\n" << endl;
 		return;
@@ -166,7 +166,7 @@ void searchAndDeleteStudent(Course &course)
 
 void removeStudent(Course course[], int size)
 {
-	if (size == 0)
+	if (size == 0 || course->getName() == "Unknown")
 	{
 		cout << "\n\t\tERROR: No data file has been read and stored into Courses.\n" << endl;
 		return;
@@ -208,7 +208,7 @@ void printOneCourse(Course course)
 
 void printCourses(Course course[], int size)
 {
-	if (size == 0)
+	if (size == 0||course->getName()=="Unknown")
 	{
 		cout << "\n\t\tERROR: No data file has been read and stored into Courses.\n" << endl;
 		return;
