@@ -35,5 +35,14 @@
     <ClInclude Include="optionThree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IntegerBag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TemplateBag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Course.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
