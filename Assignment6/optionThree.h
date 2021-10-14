@@ -22,16 +22,15 @@ void determineSize(Course* &course, int &size)
 }
 
 
-void readCourseData(Course course[], int size)
+void readCourseData(Course*& course, int size)
 {
 	if (size == 0)
 	{
 		cout << "\n\t\tERROR: Number of courses has not been assigned.\n" << endl;
 		return;
 	}
-	course = new Course[size];
 	ifstream source;
-
+	course = new Course[size];
 	for (int index = 0; index < size; index++)
 	{
 		string fileName;
@@ -115,7 +114,7 @@ void nameSearch(Course course[], int size)
 
 void searchStudent(Course course[], int size)
 {
-	if (size == 0 || course->getName() == "Unknown")
+	if (size == 0 || course[0].getName() == "Unknown")
 	{
 		cout << "\n\t\tERROR: No data file has been read and stored into Courses.\n" << endl;
 		return;
@@ -166,7 +165,7 @@ void searchAndDeleteStudent(Course &course)
 
 void removeStudent(Course course[], int size)
 {
-	if (size == 0 || course->getName() == "Unknown")
+	if (size == 0 || course[0].getName() == "Unknown")
 	{
 		cout << "\n\t\tERROR: No data file has been read and stored into Courses.\n" << endl;
 		return;
@@ -208,7 +207,7 @@ void printOneCourse(Course course)
 
 void printCourses(Course course[], int size)
 {
-	if (size == 0||course->getName()=="Unknown")
+	if (size == 0 || course[0].getName() == "Unknown")
 	{
 		cout << "\n\t\tERROR: No data file has been read and stored into Courses.\n" << endl;
 		return;
