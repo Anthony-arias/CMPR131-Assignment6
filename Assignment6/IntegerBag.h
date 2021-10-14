@@ -146,7 +146,7 @@ public:
 		{
 			if (index == skippedIndex)
 			{
-				for (int i = index; i < size; i++)
+				for (int i = index; i < size - 1; i++)
 					newBag[i] = original[i + 1];
 
 				break;

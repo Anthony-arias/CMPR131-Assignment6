@@ -39,7 +39,7 @@ void insertTemplate(TemplateBag<double>& MyBag)
 {
 	double intInserted = inputDouble("\n\t\tEnter a value and insert into MyBag: ");
 	MyBag.insert(intInserted);
-	cout << "\n\t\t" << intInserted << " has been inserted into MyBag\n" << endl;
+	cout << "\n\t\t" << intInserted << " has been inserted into MyBag.\n" << endl;
 }
 
 void removeTemplateIndex(TemplateBag<double>& MyBag)
@@ -55,7 +55,7 @@ void removeTemplateIndex(TemplateBag<double>& MyBag)
 	double valueRemoved = MyBag.getValueAt(indexRemoved);
 	MyBag.remove(indexRemoved);
 	
-	cout << "\n\t\tValue " << valueRemoved << " has been deleted from MyBag\n" << endl;
+	cout << "\n\t\tValue " << valueRemoved << " has been deleted from MyBag.\n" << endl;
 
 }
 
@@ -68,7 +68,7 @@ void sortTemplate(TemplateBag<double>& MyBag)
 	}
 
 	MyBag.sort();
-	cout << "\n\t\tMyBag has been sorted\n" << endl;
+	cout << "\n\t\tMyBag has been sorted.\n" << endl;
 }
 
 void displayTemplateBag(TemplateBag<double> MyBag)
