@@ -59,7 +59,7 @@ void mainMenu(void)
 }
 
 //PreCondition: NA
-//PostCondition:
+//PostCondition: executes different programs in program one
 void programOne(void)
 {
     clearScreen();
@@ -89,7 +89,7 @@ void programOne(void)
 
 
 //PreCondition: NA
-//PostCondition:
+//PostCondition: executes different programs in program two
 void programTwo(void)
 {
     clearScreen();
@@ -118,7 +118,7 @@ void programTwo(void)
 }
 
 //PreCondition: NA
-//PostCondition:
+//PostCondition: executes different programs in program three
 void programThree(void)
 {
     clearScreen();
