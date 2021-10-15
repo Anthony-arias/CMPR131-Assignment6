@@ -1,16 +1,9 @@
 // main.cpp
 
 // Team: Anthony, An, Van, Vincent, Nhan
-// Chapter 6: 
-// 10/??/2021
+// Chapter 6: SOFTWARE DEVELOPMENT WITH TEMPLATES, ITERATORS, AND THE STL
+// 10/14/2021
 
-
-/*
-    October 6
-        - Cleaned up Integer and Template bag classes. 
-        - Began work on challenge 3, demo of template class
-        - waiting on response of professor to continue.
-*/
 
 #include <iostream>
 #include <string>
