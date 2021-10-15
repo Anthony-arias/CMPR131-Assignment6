@@ -6,6 +6,8 @@
 #include "TemplateBag.h"
 #include "input.h"
 
+// Precondition: valid TemplateBag object that has double data type
+// Postcondition: search the value from MyBag and display where it is
 void searchTemplateValue(TemplateBag<double> MyBag)
 {
 	if (MyBag.isEmpty())
@@ -23,6 +25,8 @@ void searchTemplateValue(TemplateBag<double> MyBag)
 		cout << "\n\t\tValue " << value << " is found at subscript #" << atIndex << " from MyBag.\n";
 }
 
+// Precondition: valid reference TemplateBag object that has double data type
+// Postcondition: clear all elements in MyBag
 void emptyTemplateBag(TemplateBag<double>& MyBag)
 {
 	if (MyBag.isEmpty())
@@ -35,6 +39,8 @@ void emptyTemplateBag(TemplateBag<double>& MyBag)
 	cout << "\n\t\tMyBag is cleared of all elements.\n" << endl;
 }
 
+// Precondition: valid reference TemplateBag object that has double data type
+// Postcondition: enter a value and insert it into MyBag
 void insertTemplate(TemplateBag<double>& MyBag)
 {
 	double intInserted = inputDouble("\n\t\tEnter a value and insert into MyBag: ");
@@ -42,6 +48,8 @@ void insertTemplate(TemplateBag<double>& MyBag)
 	cout << "\n\t\t" << intInserted << " has been inserted into MyBag.\n" << endl;
 }
 
+// Precondition: valid reference TemplateBag object that has double data type
+// Postcondition: enter the MyBag's index and remove value from it.
 void removeTemplateIndex(TemplateBag<double>& MyBag)
 {
 	if (MyBag.isEmpty())
@@ -59,6 +67,8 @@ void removeTemplateIndex(TemplateBag<double>& MyBag)
 
 }
 
+// Precondition: valid reference TemplateBag object that has double data type
+// Postcondition: sort the value in MyBag
 void sortTemplate(TemplateBag<double>& MyBag)
 {
 	if (MyBag.isEmpty())
@@ -71,6 +81,8 @@ void sortTemplate(TemplateBag<double>& MyBag)
 	cout << "\n\t\tMyBag has been sorted.\n" << endl;
 }
 
+// Precondition: valid TemplateBag object that has double data type
+// Postcondition: display all contents in MyBag
 void displayTemplateBag(TemplateBag<double> MyBag)
 {
 	if (MyBag.isEmpty())

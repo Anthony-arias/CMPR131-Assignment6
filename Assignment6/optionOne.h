@@ -6,6 +6,8 @@
 #include "IntegerBag.h"
 #include "input.h"
 
+// Precondition: valid IntegerBag object
+// Postcondition: search the value from MyBag and display where it is
 void searchIntValue(IntegerBag MyBag)
 {
 	if (MyBag.isEmpty())
@@ -23,6 +25,8 @@ void searchIntValue(IntegerBag MyBag)
 		cout << "\n\t\tValue " << value << " is found at subscript #" << atIndex << " from MyBag.\n" << endl;
 }
 
+// Precondition: valid IntegerBag object
+// Postcondition: clear all elements in MyBag
 void emptyIntBag(IntegerBag &MyBag)
 {
 	if (MyBag.isEmpty())
@@ -35,6 +39,8 @@ void emptyIntBag(IntegerBag &MyBag)
 	cout << "\n\t\tMyBag is cleared of all elements.\n" << endl;
 }
 
+// Precondition: valid reference IntegerBag object
+// Postcondition: enter a value and insert it into MyBag
 void insertInt(IntegerBag &MyBag)
 {
 	int intInserted = inputInteger("\n\t\tEnter a value and insert into MyBag: ");
@@ -42,6 +48,8 @@ void insertInt(IntegerBag &MyBag)
 	cout << "\n\t\t" << intInserted << " has been inserted into MyBag.\n" << endl;
 }
 
+// Precondition: valid IntegerBag object
+// Postcondition: enter the MyBag's index and remove value from it.
 void removeIntIndex(IntegerBag &MyBag)
 {
 	if (MyBag.isEmpty())
@@ -58,6 +66,8 @@ void removeIntIndex(IntegerBag &MyBag)
 	cout << "\n\t\tValue " << valueRemoved << " has been deleted from MyBag.\n" << endl;
 }
 
+// Precondition: valid IntegerBag object
+// Postcondition: sort the value in MyBag
 void sortInt(IntegerBag &MyBag)
 {
 	if (MyBag.isEmpty())
@@ -70,6 +80,8 @@ void sortInt(IntegerBag &MyBag)
 	cout << "\n\t\tMyBag has been sorted.\n" << endl;
 }
 
+// Precondition: valid IntegerBag object
+// Postcondition: display all contents in MyBag
 void displayIntBag(IntegerBag MyBag)
 {
 	if (MyBag.isEmpty())
