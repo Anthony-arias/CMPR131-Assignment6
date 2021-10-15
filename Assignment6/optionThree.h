@@ -166,9 +166,9 @@ void searchAndDeleteStudent(Course &course)
 	for (int i = 0; i < course.getNumberOfStudents(); i++)
 		if (course.getStudentIDAt(i) == userInput)
 		{
-			cout << "\n\t\t\tStudent ID: " << userInput << " has been found in Course : " << course.getName() << "." << endl;
+			cout << "\n\t\t\tStudent ID: " << userInput << " has been found in Course : " << course.getName() << endl;
 			course.removeStudentAt(course,i);
-			cout << ", and has been removed." << endl;
+			cout << "\t\t\t, and has been removed." << endl;
 			count++;
 		}
 	if (count == 0)
