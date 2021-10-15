@@ -16,11 +16,13 @@ private:
 
 public:
 
+	// Argument constructor
 	Course(string newName = "Unknown")
 	{
 		name = newName;
 	}
 
+	// Argument constructor
 	Course(Course &course)
 	{
 		name = course.getName();
@@ -32,22 +34,30 @@ public:
 			studentGrades.insert(course.getStudentGradeAt(index));
 		}
 	}
-
+	
+	// Precondition: NA
+	// Postcondition: return name
 	string getName()
 	{
 		return name;
 	}
 
+	// Precondition: valid string variable
+	// Postcondition: name is assigned in newName
 	void setName(string newName)
 	{
 		name = newName;
 	}
 
+	// Precondition: valid student ID
+	// Postcondition: add student ID
 	void addStudentID(int studentID)
 	{
 		studentIDs.insert(studentID);
 	}
 
+	// Precondition: valid index
+	// Postcondition: get student ID at indicated index
 	int getStudentIDAt(int targetIndex)
 	{
 		if (!studentIDs.isValidIndex(targetIndex))
@@ -56,11 +66,15 @@ public:
 		return studentIDs.getValueAt(targetIndex);
 	}
 
+	// Precondition: valid string student's name
+	// Postcondition: add student's name
 	void addStudentName(string studentName)
 	{
 		studentNames.insert(studentName);
 	}
 
+	// Precondition: valid index
+	// Postcondition: get student's name at indicated index
 	string getStudentNameAt(int targetIndex)
 	{
 		if (!studentNames.isValidIndex(targetIndex))
@@ -69,16 +83,22 @@ public:
 		return studentNames.getValueAt(targetIndex);
 	}
 
+	// Precondition: NA
+	// Postcondition: get the number of students
 	int getNumberOfStudents()
 	{
 		return studentNames.getSize();
 	}
 
+	// Precondition: valid double score
+	// Postcondition: add student's score
 	void addStudentScore(double score)
 	{
 		studentScores.insert(score);
 	}
 
+	// Precondition: valid index
+	// Postcondition: get student's score at indicated index
 	double getStudentScoreAt(int targetIndex)
 	{
 		if (!studentScores.isValidIndex(targetIndex))
@@ -87,6 +107,8 @@ public:
 		return studentScores.getValueAt(targetIndex);
 	}
 
+	// Precondition: valid double score
+	// Postcondition: check student's grade and add it
 	void addStudentGrade(double score)
 	{
 		char grade = 'F';
@@ -104,6 +126,8 @@ public:
 		studentGrades.insert(grade);
 	}
 
+	// Precondition: valid index
+	// Postcondition: get student's grade at indicated index, if index is not found, assigned as 'U'
 	char getStudentGradeAt(int targetIndex)
 	{
 		if (!studentGrades.isValidIndex(targetIndex))
@@ -112,6 +136,8 @@ public:
 		return studentGrades.getValueAt(targetIndex);
 	}
 
+	// Precondition: valid reference Course object and valid index
+	// Postcondition: remove student's data at indicated index
 	void removeStudentAt(Course& course, int targetIndex)
 	{
 
