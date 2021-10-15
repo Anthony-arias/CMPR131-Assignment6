@@ -10,7 +10,9 @@ using namespace std;
 #ifndef OPTION_THREE_LOCK
 #define OPTION_THREE_LOCK
 
-// October 6 ~ might not be abe to use TemplateBag for course array... waiting on response from Prof
+
+// Precondition: valid dynamic reference Course object and valid reference integer size
+// Postcondition: Create the number of courses assigned by user
 void determineSize(Course* &course, int &size)
 {
 	size = inputInteger("\n\t\tEnter the number of courses: ",true);
@@ -21,7 +23,8 @@ void determineSize(Course* &course, int &size)
 		cout << "\t\t" << size << " courses has been created.\n" << endl;
 }
 
-
+// Precondition: valid dynamic reference Course class and valid integer size
+// Postcondition: read contents from file and store them in Course object
 void readCourseData(Course*& course, int size)
 {
 	if (size == 0)
@@ -73,11 +76,15 @@ void readCourseData(Course*& course, int size)
 			}
 		}
 		source.close();
-		cout << "\n\t\tData from file, " << fileName << ", has been read and stored into Courses[" << index << "]" << endl;
+
+		cout << "\n\t\tData from file, " << fileName << ", has been read and stored into Courses[" << index << "]" <<  "." << endl;
 	}
 
 }
 
+
+// Precondition: valid static Course array and valid integer size
+// Postcondition: search a student ID and show where it is
 void idSearch(Course course[], int size)
 {
 	int userInput = inputInteger("\t\t\tEnter a student ID to search: ", true);
@@ -87,7 +94,8 @@ void idSearch(Course course[], int size)
 		for(int j =0;j<course[i].getNumberOfStudents();j++)
 			if (course[i].getStudentIDAt(j) == userInput)
 			{
-				cout << "\n\t\t\tStudent ID: " << userInput << " has been found in Course : " << course[i].getName() << endl;
+
+				cout << "\n\t\t\tStudent ID: " << userInput << " has been found in Course : " << course[i].getName() << "." << endl;
 				count++;
 			}
 	}
@@ -95,6 +103,8 @@ void idSearch(Course course[], int size)
 		cout << "\n\t\t\tStudent ID: " << userInput << " can not be found." << endl;
 }
 
+// Precondition: valid static Course array and valid integer size
+// Postcondition: search a student name and show where it is
 void nameSearch(Course course[], int size)
 {
 	string userInput = inputString("\t\t\tEnter a student name to search: ", true);
@@ -104,7 +114,7 @@ void nameSearch(Course course[], int size)
 		for (int j = 0; j < course[i].getNumberOfStudents(); j++)
 			if (course[i].getStudentNameAt(j) == userInput)
 			{
-				cout << "\n\t\t\tStudent name: " << userInput << " has been found in Course: " << course[i].getName() << endl;
+				cout << "\n\t\t\tStudent name: " << userInput << " has been found in Course: " << course[i].getName() << "." << endl;
 				count++;
 			}
 	}
@@ -112,6 +122,8 @@ void nameSearch(Course course[], int size)
 		cout << "\n\t\t\tStudent Name: " << userInput << " can not be found." << endl;
 }
 
+// Precondition: valid static Course array and valid integer size
+// Postcondition: give user the options between searching the student ID or student's name
 void searchStudent(Course course[], int size)
 {
 	if (size == 0 || course[0].getName() == "Unknown")
@@ -145,6 +157,8 @@ void searchStudent(Course course[], int size)
 
 }
 
+// Precondition: valid reference Course object
+// Postcondition: search the student ID and delete it
 void searchAndDeleteStudent(Course &course)
 {
 	int userInput = inputInteger("\t\t\tEnter a student ID to search and delete: ", true);
@@ -152,9 +166,8 @@ void searchAndDeleteStudent(Course &course)
 	for (int i = 0; i < course.getNumberOfStudents(); i++)
 		if (course.getStudentIDAt(i) == userInput)
 		{
-			cout << "\n\t\t\tStudent ID: " << userInput << " has been found in Course : " << course.getName();
+			cout << "\n\t\t\tStudent ID: " << userInput << " has been found in Course : " << course.getName() << "." << endl;
 			course.removeStudentAt(course,i);
-
 			cout << ", and has been removed." << endl;
 			count++;
 		}
@@ -162,7 +175,8 @@ void searchAndDeleteStudent(Course &course)
 		cout << "\n\t\t\tStudent ID: " << userInput << " can not be found." << endl;
 }
 
-
+// Precondition: valid static Course array and valid integer size
+// Postcondition: display the number of courses that have been stored, and ask the user to choose which course to remove a student
 void removeStudent(Course course[], int size)
 {
 	if (size == 0 || course[0].getName() == "Unknown")
@@ -185,6 +199,8 @@ void removeStudent(Course course[], int size)
 
 }
 
+// Precondition: valid Course object
+// Postcondition: print the contents 
 void printOneCourse(Course course)
 {
 	cout << "\n\t\t" << course.getName() << endl;
@@ -221,6 +237,8 @@ void printOneCourse(Course course)
 
 }
 
+// Precondition: valid static Course array and valid integer size
+// Postcondition: display the number of courses that have been stored, and ask the user to choose which course to display all contents
 void printCourses(Course course[], int size)
 {
 	if (size == 0 || course[0].getName() == "Unknown")
@@ -244,10 +262,7 @@ void printCourses(Course course[], int size)
 			for (int i = 0; i < size; i++)
 				printOneCourse(course[i]);
 		}
-
-
 	}
-
 }
 
 #endif
