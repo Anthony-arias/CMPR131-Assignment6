@@ -10,6 +10,7 @@ using namespace std;
 #ifndef OPTION_THREE_LOCK
 #define OPTION_THREE_LOCK
 
+
 // Precondition: valid dynamic reference Course object and valid reference integer size
 // Postcondition: Create the number of courses assigned by user
 void determineSize(Course* &course, int &size)
@@ -75,10 +76,12 @@ void readCourseData(Course*& course, int size)
 			}
 		}
 		source.close();
+
 		cout << "\n\t\tData from file, " << fileName << ", has been read and stored into Courses[" << index << "]" <<  "." << endl;
 	}
 
 }
+
 
 // Precondition: valid static Course array and valid integer size
 // Postcondition: search a student ID and show where it is
@@ -91,6 +94,7 @@ void idSearch(Course course[], int size)
 		for(int j =0;j<course[i].getNumberOfStudents();j++)
 			if (course[i].getStudentIDAt(j) == userInput)
 			{
+
 				cout << "\n\t\t\tStudent ID: " << userInput << " has been found in Course : " << course[i].getName() << "." << endl;
 				count++;
 			}
@@ -164,7 +168,6 @@ void searchAndDeleteStudent(Course &course)
 		{
 			cout << "\n\t\t\tStudent ID: " << userInput << " has been found in Course : " << course.getName() << "." << endl;
 			course.removeStudentAt(course,i);
-
 			cout << ", and has been removed." << endl;
 			count++;
 		}

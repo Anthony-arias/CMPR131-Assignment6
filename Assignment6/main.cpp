@@ -4,13 +4,23 @@
 // Chapter 6: 
 // 10/??/2021
 
+
+/*
+    October 6
+        - Cleaned up Integer and Template bag classes. 
+        - Began work on challenge 3, demo of template class
+        - waiting on response of professor to continue.
+*/
+
 #include <iostream>
 #include <string>
 #include "optionOne.h"
 #include "optionTwo.h"
 #include "optionThree.h"
 #include "input.h"
+#include "Course.h"
 #include "menus.h"
+#include<memory>
 
 void mainMenu(void);
 void programOne(void);
@@ -38,10 +48,10 @@ void mainMenu(void)
         int userInput = inputInteger("\t\tOption: ", 0, 3);
         switch (userInput)
         {
-        case 0: clearScreen(); return;
-        case 1: clearScreen(); programOne(); break;
-        case 2: clearScreen(); programTwo(); break;
-        case 3: clearScreen(); programThree(); break;
+        case 0: return;
+        case 1: programOne(); break;
+        case 2: programTwo(); break;
+        case 3: programThree(); break;
         default: cout << "\t\tERROR-3A: Invalid input. Must be from 0..3." << endl;
         }
 
@@ -52,9 +62,12 @@ void mainMenu(void)
 //PostCondition:
 void programOne(void)
 {
+    clearScreen();
+    IntegerBag MyBag;
+
     do
     {
-        clearScreen();
+        
         displayOptionOneMenu();
 
         int option = inputChar("\t\tOption: ");
@@ -62,15 +75,15 @@ void programOne(void)
         switch (option)
         {
         case '0': return;
-        case 'a': case 'A': /*Function here*/ pause("\n\t\tPress enter to continue..."); break;
-        case 'b': case 'B': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'c': case 'C': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'd': case 'D': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'e': case 'E': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'f': case 'F': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', or 'S'" << endl;
-            pause("\n\t\tPress enter to continue...");
+        case 'a': case 'A': emptyIntBag(MyBag); break;
+        case 'b': case 'B': insertInt(MyBag); break;
+        case 'c': case 'C': searchIntValue(MyBag); break;
+        case 'd': case 'D': removeIntIndex(MyBag); break;
+        case 'e': case 'E': sortInt(MyBag); break;
+        case 'f': case 'F': displayIntBag(MyBag); break;
+        default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D','E', or 'F'" << endl;
         }
+        cout << endl;
     } while (true);
 }
 
@@ -79,9 +92,12 @@ void programOne(void)
 //PostCondition:
 void programTwo(void)
 {
+    clearScreen();
+    TemplateBag<double> MyBag;
+
     do
     {
-        clearScreen();
+
         displayOptionTwoMenu();
 
         int option = inputChar("\t\tOption: ");
@@ -89,15 +105,15 @@ void programTwo(void)
         switch (option)
         {
         case '0': return;
-        case 'a': case 'A': /*Function here*/ pause("\n\t\tPress enter to continue..."); break;
-        case 'b': case 'B': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'c': case 'C': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'd': case 'D': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'e': case 'E': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'f': case 'F': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', or 'S'" << endl;
-            pause("\n\t\tPress enter to continue...");
+        case 'a': case 'A': emptyTemplateBag(MyBag); break;
+        case 'b': case 'B': insertTemplate(MyBag); break;
+        case 'c': case 'C': searchTemplateValue(MyBag); break;
+        case 'd': case 'D': removeTemplateIndex(MyBag); break;
+        case 'e': case 'E': sortTemplate(MyBag); break;
+        case 'f': case 'F': displayTemplateBag(MyBag); break;
+        default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D','E', or 'F'" << endl;
         }
+        cout << endl;
     } while (true);
 }
 
@@ -105,9 +121,14 @@ void programTwo(void)
 //PostCondition:
 void programThree(void)
 {
+    clearScreen();
+    Course* newCourse;
+    int size = 0;
+    newCourse = new Course[size];
+
     do
     {
-        clearScreen();
+
         displayOptionThreeMenu();
 
         int option = inputChar("\t\tOption: ");
@@ -115,13 +136,13 @@ void programThree(void)
         switch (option)
         {
         case '0': return;
-        case 'a': case 'A': /*Function here*/ pause("\n\t\tPress enter to continue..."); break;
-        case 'b': case 'B': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'c': case 'C': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'd': case 'D': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        case 'e': case 'E': /*Function here*/ pause("\n\t\tPress enter to continue...");  break;
-        default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C', or 'D'" << endl;
-            pause("\n\t\tPress enter to continue...");
+        case 'a': case 'A': determineSize(newCourse, size); break;
+        case 'b': case 'B': readCourseData(newCourse, size);  break;
+        case 'c': case 'C': searchStudent(newCourse, size);  break;
+        case 'd': case 'D': removeStudent(newCourse, size);  break;
+        case 'e': case 'E': printCourses(newCourse, size);  break;
+        default: cout << "\t\tERROR-1A: Invalid input. Must be '0','A','B','C','D' or 'E'" << endl;
         }
+        cout << endl;
     } while (true);
 }
