@@ -10,8 +10,6 @@ using namespace std;
 #ifndef OPTION_THREE_LOCK
 #define OPTION_THREE_LOCK
 
-// October 6 ~ might not be abe to use TemplateBag for course array... waiting on response from Prof
-
 // Precondition: valid dynamic reference Course class and valid reference integer size
 // Postcondition: Create the number of courses assigned by user
 void determineSize(Course* &course, int &size)
