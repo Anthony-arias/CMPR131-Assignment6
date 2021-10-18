@@ -166,9 +166,9 @@ void searchAndDeleteStudent(Course &course)
 	for (int i = 0; i < course.getNumberOfStudents(); i++)
 		if (course.getStudentIDAt(i) == userInput)
 		{
-			cout << "\n\t\t\tStudent ID: " << userInput << " has been found in Course : " << course.getName() << "." << endl;
+			cout << "\n\t\t\tStudent ID: " << userInput << " has been found in Course : " << course.getName() <<"," << endl;
 			course.removeStudentAt(course,i);
-			cout << ", and has been removed." << endl;
+			cout << "\t\t\tand has been removed." << endl;
 			count++;
 		}
 	if (count == 0)
@@ -211,28 +211,32 @@ void printOneCourse(Course course)
 	cout << setw(10) << left << "Grade" << endl;
 	double totalScores = 0.0;
 	double averagedScore = 0.0;
-	for (int i = 0; i < course.getNumberOfStudents(); i++)
+	if (course.getNumberOfStudents() > 0)
 	{
-		cout << "\t\t" << setw(10) << left << i;
-		cout << setw(15) << left << course.getStudentIDAt(i);
-		cout << setw(30) << left << course.getStudentNameAt(i);
-		cout << setw(10) << left << course.getStudentScoreAt(i);
-		cout << setw(10) << left << course.getStudentGradeAt(i) << endl;
-		totalScores = totalScores + course.getStudentScoreAt(i);
+		for (int i = 0; i < course.getNumberOfStudents(); i++)
+		{
+			cout << "\t\t" << setw(10) << left << i;
+			cout << setw(15) << left << course.getStudentIDAt(i);
+			cout << setw(30) << left << course.getStudentNameAt(i);
+			cout << setw(10) << left << course.getStudentScoreAt(i);
+			cout << setw(10) << left << course.getStudentGradeAt(i) << endl;
+			totalScores = totalScores + course.getStudentScoreAt(i);
+		}
+		averagedScore = totalScores / course.getNumberOfStudents();
+		char grade = 'F';
+		if (averagedScore > 89.9)
+			grade = 'A';
+		else if (averagedScore > 79.9)
+			grade = 'B';
+		else if (averagedScore > 69.9)
+			grade = 'C';
+		else if (averagedScore > 59.9)
+			grade = 'D';
+		else
+			grade = 'F';
+
+		cout << "\n\t\tAverage score and grade: " << averagedScore << "(" << grade << ")" << endl;
 	}
-	averagedScore = totalScores / course.getNumberOfStudents();
-	char grade = 'F';
-	if (averagedScore > 89.9)
-		grade = 'A';
-	else if (averagedScore > 79.9)
-		grade = 'B';
-	else if (averagedScore > 69.9)
-		grade = 'C';
-	else if (averagedScore > 59.9)
-		grade = 'D';
-	else
-		grade = 'F';
-	cout << "\n\t\tAverage score and grade: " << averagedScore << "(" << grade << ")" << endl;
 	cout << endl;
 
 }
