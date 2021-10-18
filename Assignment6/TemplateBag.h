@@ -26,8 +26,12 @@ public:
 
 	TemplateBag (int arraySize)
 	{
-		bag = new T[arraySize];
-		size = arraySize;
+		if (arraySize > 0)
+		{
+			bag = new T[arraySize];
+			size = arraySize;
+		}
+		else size = 0;
 	}
 
 	TemplateBag(TemplateBag& newBag)
@@ -47,7 +51,7 @@ public:
 	// Postcondition: the bag is cleared and is set to a new size
 	void setBagSize(int newSize)
 	{
-		if (size < 0)
+		if (newSize < 0)
 			return;
 
 		clear();
