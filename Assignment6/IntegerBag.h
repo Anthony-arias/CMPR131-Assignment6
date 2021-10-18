@@ -20,8 +20,13 @@ public:
 
 	IntegerBag(int arraySize)
 	{
-		bag = new int[arraySize];
-		size = arraySize;
+		if (arraySize > 0)
+		{
+			bag = new int[arraySize];
+			size = arraySize;
+		}
+		else
+			size = 0;
 	}
 
 	IntegerBag(IntegerBag& newBag)
@@ -41,7 +46,7 @@ public:
 	// Postcondition: the bag is cleared and is set to a new size
 	void setBagSize(int newSize)
 	{
-		if (size < 0)
+		if (newSize < 0)
 			return;
 
 		clear();
@@ -234,7 +239,7 @@ public:
 	}
 
 	// Precondition: list should not be empty
-	// Postcondition: The list is displaye
+	// Postcondition: The list is displayed
 	void display()
 	{
 		if (isEmpty())
